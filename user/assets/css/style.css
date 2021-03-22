@@ -1,0 +1,148 @@
+.fixed-plugin{display: none;}
+.active-pro{display: none!important;}
+.inp-color{    color: black;}
+.inp-color:focus{    color: black;}
+.pad-cont-fix{padding: 78px 30px 30px 280px;}
+
+
+[type="radio"]:checked,
+[type="radio"]:not(:checked) {
+    position: absolute;
+    left: -9999px;
+}
+[type="radio"]:checked + label,
+[type="radio"]:not(:checked) + label
+{
+    position: relative;
+    padding-left: 28px;
+    cursor: pointer;
+    line-height: 20px;
+    display: inline-block;
+    color: #666;
+}
+[type="radio"]:checked + label:before,
+[type="radio"]:not(:checked) + label:before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 18px;
+    height: 18px;
+    border: 1px solid #ddd;
+    border-radius: 100%;
+    background: #fff;
+}
+[type="radio"]:checked + label:after,
+[type="radio"]:not(:checked) + label:after {
+    content: '';
+    width: 12px;
+    height: 12px;
+    background: #F87DA9;
+    position: absolute;
+    top: 4px;
+    left: 4px;
+    border-radius: 100%;
+    -webkit-transition: all 0.2s ease;
+    transition: all 0.2s ease;
+}
+[type="radio"]:not(:checked) + label:after {
+    opacity: 0;
+    -webkit-transform: scale(0);
+    transform: scale(0);
+}
+[type="radio"]:checked + label:after {
+    opacity: 1;
+    -webkit-transform: scale(1);
+    transform: scale(1);
+}
+
+
+.logow{
+
+width:200px;
+
+}
+
+.vsfight{
+
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width:100px;
+
+}
+
+@media only screen and (max-width: 600px) {
+    .row {
+      padding:20px;
+    }
+  }
+
+  .vsrow{
+
+    margin-top: 20px;
+    border-radius: 50px;
+    background-image: url(https://thumbs.gfycat.com/BetterEnchantingCrane-size_restricted.gif);
+    padding: 16px;
+    background-size: cover;
+
+  }
+
+
+
+
+
+
+
+
+
+  .check-colours {
+	overflow:hidden;
+	position:relative;
+	padding:5px;
+	border:1px solid #000;
+	float:left;
+}
+input.check-colour, label.check-colour span {
+	position:absolute;
+	left:-999em;
+}
+label.check-colour {
+	width:25px;
+	height:25px;
+	float:left;
+	cursor:pointer;
+}
+.yellow {
+	background:yellow
+}
+.blue {
+	background:blue
+}
+.green {
+	background:green
+}
+.check-colours label:hover{
+  outline:3px solid silver;
+  box-shadow:0 0 10px rgba(0,0,0,0.4);
+  position:relative;
+  overflow:hidden;
+}
+input.check-colour:checked + label {
+	outline:3px solid silver;
+	position:relative;
+  overflow:hidden;
+  z-index:4;
+}
+.check-colours div{float:left}
+
+/* ie8 styling */
+.ie8 .check-colours div{position:relative;}
+.ie8 input.check-colour {
+	position:absolute;
+	left:3px;
+	top:3px;
+	z-index:3;
+}
