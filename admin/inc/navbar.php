@@ -24,6 +24,38 @@ if($query_run){
 
 
 
+$query = "SELECT * FROM basic_user WHERE username='$currentUser' "; 
+$query_run = mysqli_query($connection, $query);
+if($query_run){
+
+    if(mysqli_num_rows($query_run)>0){
+
+
+        while($row = mysqli_fetch_array($query_run)){
+          if ($row['priv'] == 0){
+
+            $_SESSION = array();
+
+// Если требуется уничтожить сессию, также необходимо удалить сессионные cookie.
+// Замечание: Это уничтожит сессию, а не только данные сессии!
+if (ini_get("session.use_cookies")) {
+    $params = session_get_cookie_params();
+    setcookie(session_name(), '', time() - 42000,
+        $params["path"], $params["domain"],
+        $params["secure"], $params["httponly"]
+    );
+}
+
+// Наконец, уничтожаем сессию.
+session_destroy();
+header("Refresh:0");
+          }
+
+
+
+}}}
+
+
 ?>
 
 
