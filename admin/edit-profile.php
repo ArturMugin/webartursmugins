@@ -1,7 +1,7 @@
 <?php
-include('security.php');
-include('inc/head.php'); 
-include('inc/navbar.php'); 
+include ('security.php');
+include ('inc/head.php');
+include ('inc/navbar.php');
 ?>
 
 
@@ -16,19 +16,14 @@ include('inc/navbar.php');
 
   <div class="card-body">
 
-<?php 
-
+<?php
 require 'config/config.php';
-
-if (isset($_POST['edit_btn'])){
-
+if (isset($_POST['edit_btn'])) {
     $id = $_POST["edit_id"];
-    $query = "SELECT * FROM admins WHERE id='$id' "; 
+    $query = "SELECT * FROM admins WHERE id='$id' ";
     $query_run = mysqli_query($connection, $query);
-
-    foreach ($query_run as $row){
-
-        ?>
+    foreach ($query_run as $row) {
+?>
 
 
   <form action="code.php" method="POST">
@@ -54,14 +49,8 @@ if (isset($_POST['edit_btn'])){
 </div>
 </form>
 <?php
-
+    }
 }
-
-
-
-}
-
-
 ?>
 </div>
 </div>
@@ -86,19 +75,14 @@ if (isset($_POST['edit_btn'])){
 
   <div class="card-body">
 
-<?php 
-
+<?php
 require 'config/config.php';
-
-if (isset($_POST['edit_btn'])){
-
+if (isset($_POST['edit_btn'])) {
     $id = $_POST["edit_id"];
-    $query = "SELECT * FROM basic_user WHERE id='$id' "; 
+    $query = "SELECT * FROM basic_user WHERE id='$id' ";
     $query_run = mysqli_query($connection, $query);
-
-    foreach ($query_run as $row){
-
-        ?>
+    foreach ($query_run as $row) {
+?>
 
 
   <form action="code.php" method="POST">
@@ -124,14 +108,8 @@ if (isset($_POST['edit_btn'])){
 </div>
 </form>
 <?php
-
+    }
 }
-
-
-
-}
-
-
 ?>
 </div>
 </div>
@@ -141,6 +119,6 @@ if (isset($_POST['edit_btn'])){
 
 
 <?php
-include('inc/js-scripts.php');
-include('inc/footer.php');
+include ('inc/js-scripts.php');
+include ('inc/footer.php');
 ?>

@@ -1,61 +1,37 @@
-<?php 
-
+<?php
 require 'config/config.php';
 $currentUser = $_SESSION["username"];
-$query = "SELECT * FROM admins WHERE username='$currentUser' "; 
+$query = "SELECT * FROM admins WHERE username='$currentUser' ";
 $query_run = mysqli_query($connection, $query);
-if($query_run){
-
-    if(mysqli_num_rows($query_run)>0){
-
-
-        while($row = mysqli_fetch_array($query_run)){
-          if ($row['dark'] == 1){
-
-            echo '<script type="text/javascript">',
-            'var body = document.body;body.classList.add("white-content");',
-            '</script>';
-          }
-
-
-
-}}}
-
-
-
-
-$query = "SELECT * FROM basic_user WHERE username='$currentUser' "; 
-$query_run = mysqli_query($connection, $query);
-if($query_run){
-
-    if(mysqli_num_rows($query_run)>0){
-
-
-        while($row = mysqli_fetch_array($query_run)){
-          if ($row['priv'] == 0){
-
-            $_SESSION = array();
-
-// Если требуется уничтожить сессию, также необходимо удалить сессионные cookie.
-// Замечание: Это уничтожит сессию, а не только данные сессии!
-if (ini_get("session.use_cookies")) {
-    $params = session_get_cookie_params();
-    setcookie(session_name(), '', time() - 42000,
-        $params["path"], $params["domain"],
-        $params["secure"], $params["httponly"]
-    );
+if ($query_run) {
+    if (mysqli_num_rows($query_run) > 0) {
+        while ($row = mysqli_fetch_array($query_run)) {
+            if ($row['dark'] == 1) {
+                echo '<script type="text/javascript">', 'var body = document.body;body.classList.add("white-content");', '</script>';
+            }
+        }
+    }
 }
-
-// Наконец, уничтожаем сессию.
-session_destroy();
-header("Refresh:0");
-          }
-
-
-
-}}}
-
-
+$query = "SELECT * FROM basic_user WHERE username='$currentUser' ";
+$query_run = mysqli_query($connection, $query);
+if ($query_run) {
+    if (mysqli_num_rows($query_run) > 0) {
+        while ($row = mysqli_fetch_array($query_run)) {
+            if ($row['priv'] == 0) {
+                $_SESSION = array();
+                // Если требуется уничтожить сессию, также необходимо удалить сессионные cookie.
+                // Замечание: Это уничтожит сессию, а не только данные сессии!
+                if (ini_get("session.use_cookies")) {
+                    $params = session_get_cookie_params();
+                    setcookie(session_name(), '', time() - 42000, $params["path"], $params["domain"], $params["secure"], $params["httponly"]);
+                }
+                // Наконец, уничтожаем сессию.
+                session_destroy();
+                header("Refresh:0");
+            }
+        }
+    }
+}
 ?>
 
 
@@ -107,21 +83,17 @@ header("Refresh:0");
 
     <form action="code.php" method="POST">
   
-<?php 
-
+<?php
 require 'config/config.php';
 $currentUser = $_SESSION["username"];
-$query = "SELECT * FROM admins WHERE username='$currentUser' "; 
+$query = "SELECT * FROM admins WHERE username='$currentUser' ";
 $query_run = mysqli_query($connection, $query);
-if($query_run){
-
-    if(mysqli_num_rows($query_run)>0){
-
-        while($row = mysqli_fetch_array($query_run)){
-
-
+if ($query_run) {
+    if (mysqli_num_rows($query_run) > 0) {
+        while ($row = mysqli_fetch_array($query_run)) {
             //print_r($row['username']);
-            ?>
+            
+?>
             <input type="hidden" name="edit_id" value="<?php echo $row['id'] ?>">
 <div class="modal-body">
 
@@ -148,15 +120,9 @@ if($query_run){
 
 
             <?php
-
         }
-
     }
-
 }
-
-
-
 ?>
 
 
@@ -214,7 +180,7 @@ if($query_run){
           <div class="collapse navbar-collapse" id="navigation">
             <ul class="navbar-nav ml-auto">
 
-            <li class="" style="margin-top:10px;">Hello <?php echo $_SESSION['username'];?> !</li>
+            <li class="" style="margin-top:10px;">Hello <?php echo $_SESSION['username']; ?> !</li>
               <li class="dropdown nav-item">
                 <a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown">
                   <div class="photo">

@@ -20,14 +20,6 @@
   <link href="assets/demo/demo.css" rel="stylesheet" />
   <link href="assets/css/style.css" rel="stylesheet" />
   <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
-
-
-
-
-
-
-
-
 </head>
 
 <body >

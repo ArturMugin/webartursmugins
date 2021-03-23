@@ -134,32 +134,25 @@
   <script src="https://cdn.trackjs.com/agent/v3/latest/t.js"></script>
   <script>
 
-<?php 
-        require 'config/config.php';
-        $query = "SELECT * FROM basic_user ";
-        $query_run = mysqli_query($connection, $query);
-        $sql = "SELECT 'novote' AS SELECTION ,COUNT(team) AS team FROM `basic_user` WHERE team=0
+<?php
+require 'config/config.php';
+$query = "SELECT * FROM basic_user ";
+$query_run = mysqli_query($connection, $query);
+$sql = "SELECT 'novote' AS SELECTION ,COUNT(team) AS team FROM `basic_user` WHERE team=0
         UNION ALL
         SELECT 'cloud',COUNT(team) FROM `basic_user` WHERE team=1
         UNION ALL
         SELECT 'unicorns',COUNT(team) FROM `basic_user` WHERE team=2 ";
-        $query_run = mysqli_query($connection, $sql);
-        
-
-
-
-      if(mysqli_num_rows($query_run)>0){
-
-        $row = mysqli_fetch_array($query_run);
-        $novote = $row['team'];
-        $row = mysqli_fetch_array($query_run);
-        $cloud = $row['team'];
-        $row = mysqli_fetch_array($query_run);
-        $unicorns = $row['team'];
- 
-      }
-        
-        ?>
+$query_run = mysqli_query($connection, $sql);
+if (mysqli_num_rows($query_run) > 0) {
+    $row = mysqli_fetch_array($query_run);
+    $novote = $row['team'];
+    $row = mysqli_fetch_array($query_run);
+    $cloud = $row['team'];
+    $row = mysqli_fetch_array($query_run);
+    $unicorns = $row['team'];
+}
+?>
     window.TrackJS &&
       TrackJS.install({
         token: "ee6fab19c5a04ac1a32a645abde4613a",
@@ -202,7 +195,7 @@ var chart = new Chart(ctx, {
           borderWidth: 2,
           borderDash: [],
           borderDashOffset: 0.0,
-          data: [<?php echo $unicorns;?>, <?php echo $cloud;?>],
+          data: [<?php echo $unicorns; ?>, <?php echo $cloud; ?>],
         }]
     },
 
@@ -252,29 +245,21 @@ var chart = new Chart(ctx, {
 
 <script>
   
-  <?php 
-        require 'config/config.php';
-        $query = "SELECT * FROM basic_user ";
-        $query_run = mysqli_query($connection, $query);
-        $sql = "SELECT 'd' AS SELECTION ,COUNT(dark) AS dark FROM `basic_user` WHERE dark=0
+  <?php
+require 'config/config.php';
+$query = "SELECT * FROM basic_user ";
+$query_run = mysqli_query($connection, $query);
+$sql = "SELECT 'd' AS SELECTION ,COUNT(dark) AS dark FROM `basic_user` WHERE dark=0
         UNION ALL
         SELECT 'w',COUNT(dark) FROM `basic_user` WHERE dark=1";
-        $query_run = mysqli_query($connection, $sql);
-        
-
-
-
-      if(mysqli_num_rows($query_run)>0){
-
-        $row = mysqli_fetch_array($query_run);
-        $d = $row['dark'];
-        $row = mysqli_fetch_array($query_run);
-        $w = $row['dark'];
-
- 
-      }
-        
-        ?>
+$query_run = mysqli_query($connection, $sql);
+if (mysqli_num_rows($query_run) > 0) {
+    $row = mysqli_fetch_array($query_run);
+    $d = $row['dark'];
+    $row = mysqli_fetch_array($query_run);
+    $w = $row['dark'];
+}
+?>
 
   var ctx = document.getElementById('dark-mode').getContext('2d');
       
@@ -309,7 +294,7 @@ var chart = new Chart(ctx, {
           borderWidth: 2,
           borderDash: [],
           borderDashOffset: 0.0,
-          data: [<?php echo $d;?>, <?php echo $w;?>],
+          data: [<?php echo $d; ?>, <?php echo $w; ?>],
         }]
     },
 
@@ -330,47 +315,33 @@ var chart = new Chart(ctx, {
 
 
 <?php
-
-
-include('config/config.php');
-
-if(isset($_POST['registerbtn']))
-{
+include ('config/config.php');
+if (isset($_POST['registerbtn'])) {
     $username = $_POST['username'];
     $email = $_POST['email'];
     $password = $_POST['password'];
     $confirm_password = $_POST['confirmpassword'];
-
-    if($password === $confirm_password)
-    {
+    if ($password === $confirm_password) {
         $query = "INSERT INTO admins (username,email,password) VALUES ('$username','$email','$password')";
         $query_run = mysqli_query($connection, $query);
-    
-        if($query_run)
-        {
+        if ($query_run) {
             echo "done";
-            $_SESSION['success'] =  "Admin is Added Successfully";
+            $_SESSION['success'] = "Admin is Added Successfully";
             header('Location: login.php');
-            echo '<script>alert("1")</script>'; 
-        }
-        else 
-        {
+            echo '<script>alert("1")</script>';
+        } else {
             echo "not done";
-            $_SESSION['status'] =  "Admin is Not Added";
+            $_SESSION['status'] = "Admin is Not Added";
             header('Location: register.php');
-            echo '<script>alert("2")</script>'; 
+            echo '<script>alert("2")</script>';
         }
-    }
-    else 
-    {
+    } else {
         echo "pass no match";
-        $_SESSION['status'] =  "Password and Confirm Password Does not Match";
+        $_SESSION['status'] = "Password and Confirm Password Does not Match";
         header('Location: register.php');
-        echo '<script>alert("3")</script>'; 
+        echo '<script>alert("3")</script>';
     }
-
 }
-
 ?>
 
 <script src="assets/js/login.js"></script>

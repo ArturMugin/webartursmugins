@@ -1,5 +1,5 @@
 <?php
-session_start(); 
+session_start();
 ?>
 <!doctype html>
 <html lang="en">
@@ -268,12 +268,12 @@ body {
 
 <div class="login-box">
 <?php
-
-if(isset($_SESSION['status']) && $_SESSION['status'] !='') 
-{
-    echo '<h2 > '.$_SESSION['status'].' </h2>';
+if (isset($_SESSION['status']) && $_SESSION['status'] != '') {
+    echo '<h2 > ' . $_SESSION['status'] . ' </h2>';
     unset($_SESSION['status']);
-}else{echo '<h2 > REGISTER </h2>';}
+} else {
+    echo '<h2 > REGISTER </h2>';
+}
 ?>
     <form class="user" action="code.php" method="POST">
       <div class="user-box">
@@ -312,8 +312,7 @@ if(isset($_SESSION['status']) && $_SESSION['status'] !='')
 
 
   <?php
-include('inc/js-scripts.php');
-
+include ('inc/js-scripts.php');
 ?>
 
 

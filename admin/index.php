@@ -1,7 +1,7 @@
 <?php
-include('security.php');
-include('inc/head.php'); 
-include('inc/navbar.php'); 
+include ('security.php');
+include ('inc/head.php');
+include ('inc/navbar.php');
 ?>
       
       
@@ -56,6 +56,6 @@ include('inc/navbar.php');
         
       </div>
 <?php
-include('inc/footer.php'); 
-include('inc/js-scripts.php');
+include ('inc/footer.php');
+include ('inc/js-scripts.php');
 ?>

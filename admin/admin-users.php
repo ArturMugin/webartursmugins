@@ -1,45 +1,27 @@
 <?php
-include('security.php');
-
-
-include('inc/head.php'); 
-include('inc/navbar.php'); 
-
-
-
+include ('security.php');
+include ('inc/head.php');
+include ('inc/navbar.php');
 ?>
 
-<?php 
-
+<?php
 require 'config/config.php';
 $currentUser = $_SESSION["username"];
-$query = "SELECT * FROM admins WHERE username='$currentUser' "; 
+$query = "SELECT * FROM admins WHERE username='$currentUser' ";
 $query_run = mysqli_query($connection, $query);
-
-if($query_run){
-
-    if(mysqli_num_rows($query_run)>0){
-
-
-        while($row = mysqli_fetch_array($query_run)){
-          if ($row['dark'] == 1){
-
-            echo "<script> var body = document.body;
+if ($query_run) {
+    if (mysqli_num_rows($query_run) > 0) {
+        while ($row = mysqli_fetch_array($query_run)) {
+            if ($row['dark'] == 1) {
+                echo "<script> var body = document.body;
 
             body.classList.add('white-content'); </script>";
-          }
-          else{
-
-            echo "<script> $('body').addClass('white-content'); </script>";
-
-
-
-          }
-
-
-}}}
-
-
+            } else {
+                echo "<script> $('body').addClass('white-content'); </script>";
+            }
+        }
+    }
+}
 ?>
 
 
@@ -100,22 +82,15 @@ if($query_run){
   <div class="card-body">
 
     <?php
-
-      if(isset($_SESSION['success']) && $_SESSION['success'] !='' ){
-
-        echo '<h2 class="bg-primary text-white">'.$_SESSION['success'].'</h2>';
-        unset($_SESSION['success']);
-
-      }
-
-      if(isset($_SESSION['status']) && $_SESSION['status'] !='' ){
-
-        echo '<h2 class="bg-danger text-white">'.$_SESSION['status'].'</h2>';
-        unset($_SESSION['status']);
-
-      }
-
-    ?>
+if (isset($_SESSION['success']) && $_SESSION['success'] != '') {
+    echo '<h2 class="bg-primary text-white">' . $_SESSION['success'] . '</h2>';
+    unset($_SESSION['success']);
+}
+if (isset($_SESSION['status']) && $_SESSION['status'] != '') {
+    echo '<h2 class="bg-danger text-white">' . $_SESSION['status'] . '</h2>';
+    unset($_SESSION['status']);
+}
+?>
 
 
 
@@ -125,14 +100,11 @@ if($query_run){
 
 
     <div class="table-responsive">
-      <?php 
-        require 'config/config.php';
-        $query = "SELECT * FROM admins";
-        $query_run = mysqli_query($connection, $query);
-
-
-
-      ?>
+      <?php
+require 'config/config.php';
+$query = "SELECT * FROM admins";
+$query_run = mysqli_query($connection, $query);
+?>
 
       <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
         <thead>
@@ -146,12 +118,10 @@ if($query_run){
           </tr>
         </thead>
         <tbody>
-     <?php 
-      
-      if(mysqli_num_rows($query_run) > 0){
-
-        while($row = mysqli_fetch_assoc($query_run)){
-          ?>
+     <?php
+if (mysqli_num_rows($query_run) > 0) {
+    while ($row = mysqli_fetch_assoc($query_run)) {
+?>
               <tr>
           
             <td><?php echo $row["id"]; ?></td>
@@ -168,22 +138,17 @@ if($query_run){
             <td>
 
                 <form action="code.php" method="post">
-                  <input type="hidden" name="delete_id" value="<?php echo $row['id']  ?>">
+                  <input type="hidden" name="delete_id" value="<?php echo $row['id'] ?>">
                   <button type="submit" name="delete_btn" class="btn btn-danger" onclick="demo.showNotification('bottom','center');"> DELETE</button>
                 </form>
             </td>
           </tr>
-          <?php 
-        }
-
-      }
-      
-     else {
-
-      echo "no record found";
-
-     }
-     ?>
+          <?php
+    }
+} else {
+    echo "no record found";
+}
+?>
         </tbody>
       </table>
 
@@ -224,22 +189,15 @@ if($query_run){
   <div class="card-body">
 
     <?php
-
-      if(isset($_SESSION['success']) && $_SESSION['success'] !='' ){
-
-        echo '<h2 class="bg-primary text-white">'.$_SESSION['success'].'</h2>';
-        unset($_SESSION['success']);
-
-      }
-
-      if(isset($_SESSION['status']) && $_SESSION['status'] !='' ){
-
-        echo '<h2 class="bg-danger text-white">'.$_SESSION['status'].'</h2>';
-        unset($_SESSION['status']);
-
-      }
-
-    ?>
+if (isset($_SESSION['success']) && $_SESSION['success'] != '') {
+    echo '<h2 class="bg-primary text-white">' . $_SESSION['success'] . '</h2>';
+    unset($_SESSION['success']);
+}
+if (isset($_SESSION['status']) && $_SESSION['status'] != '') {
+    echo '<h2 class="bg-danger text-white">' . $_SESSION['status'] . '</h2>';
+    unset($_SESSION['status']);
+}
+?>
 
 
 
@@ -249,14 +207,11 @@ if($query_run){
 
 
     <div class="table-responsive">
-      <?php 
-        require 'config/config.php';
-        $query = "SELECT * FROM basic_user";
-        $query_run = mysqli_query($connection, $query);
-
-
-
-      ?>
+      <?php
+require 'config/config.php';
+$query = "SELECT * FROM basic_user";
+$query_run = mysqli_query($connection, $query);
+?>
 
       <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
         <thead>
@@ -270,12 +225,10 @@ if($query_run){
           </tr>
         </thead>
         <tbody>
-     <?php 
-      
-      if(mysqli_num_rows($query_run) > 0){
-
-        while($row = mysqli_fetch_assoc($query_run)){
-          ?>
+     <?php
+if (mysqli_num_rows($query_run) > 0) {
+    while ($row = mysqli_fetch_assoc($query_run)) {
+?>
               <tr>
           
             <td><?php echo $row["id"]; ?></td>
@@ -292,22 +245,17 @@ if($query_run){
             <td>
 
                 <form action="code.php" method="post">
-                  <input type="hidden" name="delete_id" value="<?php echo $row['id']  ?>">
+                  <input type="hidden" name="delete_id" value="<?php echo $row['id'] ?>">
                   <button type="submit" name="delete_btnu" class="btn btn-danger" onclick="demo.showNotification('bottom','center');"> DELETE</button>
                 </form>
             </td>
           </tr>
-          <?php 
-        }
-
-      }
-      
-     else {
-
-      echo "no record found";
-
-     }
-     ?>
+          <?php
+    }
+} else {
+    echo "no record found";
+}
+?>
         </tbody>
       </table>
 
@@ -335,6 +283,6 @@ if($query_run){
 
 
 <?php
-include('inc/js-scripts.php');
-include('inc/footer.php');
+include ('inc/js-scripts.php');
+include ('inc/footer.php');
 ?>

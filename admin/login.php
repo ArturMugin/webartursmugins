@@ -1,5 +1,5 @@
 <?php
-session_start(); 
+session_start();
 ?>
 
 
@@ -257,13 +257,12 @@ body {
 
 <div class="login-box" action="code.php" method="POST">
 <?php
-
-if(isset($_SESSION['status']) && $_SESSION['status'] !='') 
-{
-    echo '<h2 > '.$_SESSION['status'].' </h2>';
+if (isset($_SESSION['status']) && $_SESSION['status'] != '') {
+    echo '<h2 > ' . $_SESSION['status'] . ' </h2>';
     unset($_SESSION['status']);
+} else {
+    echo '<h2 > Administrator Login </h2>';
 }
-else{echo '<h2 > Administrator Login </h2>';}
 ?>
     <form class="user" action="code.php" method="POST">
       <div class="user-box">
