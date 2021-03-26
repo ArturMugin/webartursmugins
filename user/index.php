@@ -3,6 +3,38 @@ include ('security.php');
 include ('inc/head.php');
 include ('inc/navbar.php');
 ?>
+<?php
+
+
+$api_key = '14113c9ebf715addccc7475a57842f5b';
+$grant_type = 'client_credentials';
+$client_id = '15281';
+$client_secret = 'd8c2c9ba8165c38a407bd4e74b0c5c61';
+
+$api_url = 'https://www.deviantart.com/oauth2/token?grant_type='.$grant_type.'&client_id='.$client_id.'&client_secret='.$client_secret;
+
+$data = json_decode( file_get_contents($api_url), true );
+
+$access_token = $data['access_token'];
+$q = 'leagueoflegends';
+$timerange = 'alltime';
+$limit = 4;
+
+$images_url = 'https://www.deviantart.com/api/v1/oauth2/browse/popular?q='.$q.'&timerange='.$timerange.'&limit='.$limit.'&mature_content=false&access_token='.$access_token;
+
+$data2 =  json_decode( file_get_contents($images_url), true );
+
+$results = $data2['results'];
+$images = array();
+
+for($i = 0; $i < count($results); $i++) {
+    array_push($images,$results[$i]['content']['src']);
+}
+
+
+
+?>
+
       
       
       
@@ -154,7 +186,32 @@ iframe{    border-radius: 60px;}
 
 
 
+<div class="col-12">
+<h1 style="padding-top:20px; text-align:center;">Currently populat on DeviantArt</h1>
 
+<style>
+.img-h{
+
+height: 600px;
+
+}
+</style>
+<div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel" data-interval="5000">
+<div class="carousel-inner img-h">
+<div class="carousel-item active">
+  <img class="d-block w-100" src="<?php echo $images[0];?>" alt="First slide">
+</div>
+<div class="carousel-item">
+<img class="d-block w-100" src="<?php echo $images[1];?>" alt="First slide">
+</div>
+<div class="carousel-item">
+<img class="d-block w-100" src="<?php echo $images[2];?>" alt="First slide">
+</div>
+<div class="carousel-item">
+<img class="d-block w-100" src="<?php echo $images[3];?>" alt="First slide">
+</div>
+
+</div>
 
 <?php
 include ('inc/footer.php');
