@@ -2,7 +2,7 @@
 session_start();
 ?>
 
-
+<!--    styling buttons and form     -->
 <style>
 body {
     margin:0;
@@ -253,7 +253,7 @@ body {
 
 
 
-
+<!--   start login page      -->
 
 <div class="login-box" action="code.php" method="POST">
 <?php

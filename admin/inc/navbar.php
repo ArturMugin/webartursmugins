@@ -1,4 +1,5 @@
 <?php
+//change color of website based on preferences of user
 require 'config/config.php';
 $currentUser = $_SESSION["username"];
 $query = "SELECT * FROM admins WHERE username='$currentUser' ";
@@ -12,6 +13,7 @@ if ($query_run) {
         }
     }
 }
+//destroy session if basic user access the admin dasboard
 $query = "SELECT * FROM basic_user WHERE username='$currentUser' ";
 $query_run = mysqli_query($connection, $query);
 if ($query_run) {
@@ -195,7 +197,7 @@ if ($query_run) {
                
                   <li class="dropdown-divider"></li>
                   <li class="nav-link"><form action="logout.php" method="POST"> </li>
-          
+          <!--    logout button     -->
           <button type="submit" name="logout_btn" style="display: contents;">Logout</button>
 
         </form></li>

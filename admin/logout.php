@@ -1,4 +1,5 @@
 <?php
+//destroy session when logout accessed
 session_start();
 if (isset($_POST['logout_btn'])) {
     session_destroy();

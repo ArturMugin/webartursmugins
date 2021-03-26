@@ -1,4 +1,5 @@
 <?php
+// register function for admins
 include ('security.php');
 if (isset($_POST['registerbtn'])) {
     $username = $_POST['username'];
@@ -36,6 +37,7 @@ if (isset($_POST['registerbtn'])) {
         }
     }
 }
+//login for admin page
 if (isset($_POST['login_btn'])) {
     $email_login = $_POST['emaill'];
     $password_login = $_POST['password'];
@@ -49,6 +51,7 @@ if (isset($_POST['login_btn'])) {
         header('Location: login.php');
     }
 }
+//delete user on admin dection
 if (isset($_POST['delete_btn'])) {
     $id = $_POST['delete_id'];
     $query = "DELETE FROM admins WHERE id='$id' ";
@@ -62,6 +65,7 @@ if (isset($_POST['delete_btn'])) {
         header('Location: admin-users.php');
     }
 }
+//delete button for user section
 if (isset($_POST['delete_btnu'])) {
     $id = $_POST['delete_id'];
     $query = "DELETE FROM basic_user WHERE id='$id' ";
@@ -75,6 +79,7 @@ if (isset($_POST['delete_btnu'])) {
         header('Location: admin-users.php');
     }
 }
+//update button for admin section
 if (isset($_POST['updatebtn'])) {
     $id = $_POST['edit_id'];
     $username = $_POST['edit_username'];
@@ -92,6 +97,7 @@ if (isset($_POST['updatebtn'])) {
         header('Location: admin-users.php');
     }
 }
+//update button for user
 if (isset($_POST['updatebtnu'])) {
     $id = $_POST['edit_id'];
     $username = $_POST['edit_username'];
@@ -109,6 +115,7 @@ if (isset($_POST['updatebtnu'])) {
         header('Location: admin-users.php');
     }
 }
+//add information to dark table
 if (isset($_POST['update_dark'])) {
     $id = $_POST['edit_id'];
     $dark = $_POST['edit_dark'];

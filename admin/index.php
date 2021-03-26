@@ -11,9 +11,10 @@ include ('inc/navbar.php');
         <div class="row" style="display:none;">
           <div class="col-12">
             <div class="card card-chart">
-
+<!--    disable one graph to make the next one work -- theme breaks them   for some reason  -->
               <div class="card-body">
                 <div class="chart-area">
+             
                   <canvas id="chartBig1"></canvas>
                 </div>
               </div>
@@ -24,7 +25,7 @@ include ('inc/navbar.php');
         <div class="col-lg-6">
             <div class="card card-chart">
               <div class="card-header">
-
+     <!--      add bar chart for teams   -->
                 <h3 class="card-title"><i style="font-size: 30px;" class="tim-icons icon-user-run text-primary"></i> CLOUD 9 VS UNICORNS voting results</h3>
               </div>
               <div class="card-body">
@@ -37,7 +38,7 @@ include ('inc/navbar.php');
               <div class="card-header">
 
                 <h3 class="card-title"><i style="font-size: 30px;" class="tim-icons icon-palette text-primary"></i> THEME COLOR THAT USER CHOSE </h3>
-              </div>
+              </div><!--    black and white graph display     -->
               <div class="card-body">
               <canvas id="dark-mode"></canvas>
               </div>

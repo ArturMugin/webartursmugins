@@ -1,31 +1,35 @@
+
 <?php
 include ('security.php');
 include ('inc/head.php');
 include ('inc/navbar.php');
 ?>
 
-<?php
-require 'config/config.php';
-$currentUser = $_SESSION["username"];
-$query = "SELECT * FROM admins WHERE username='$currentUser' ";
-$query_run = mysqli_query($connection, $query);
-if ($query_run) {
-    if (mysqli_num_rows($query_run) > 0) {
-        while ($row = mysqli_fetch_array($query_run)) {
-            if ($row['dark'] == 1) {
-                echo "<script> var body = document.body;
 
-            body.classList.add('white-content'); </script>";
-            } else {
-                echo "<script> $('body').addClass('white-content'); </script>";
-            }
-        }
-    }
-}
+
+<!-- PROBABLY NEEDS TO BE REMOVED, but if color of the page wont change this needs to be uncomented-->
+<?php
+// require 'config/config.php';
+// $currentUser = $_SESSION["username"];
+// $query = "SELECT * FROM admins WHERE username='$currentUser' ";
+// $query_run = mysqli_query($connection, $query);
+// if ($query_run) {
+//     if (mysqli_num_rows($query_run) > 0) {
+//         while ($row = mysqli_fetch_array($query_run)) {
+//             if ($row['dark'] == 1) {
+//                 echo "<script> var body = document.body;
+
+//             body.classList.add('white-content'); </script>";
+//             } else {
+//                 echo "<script> $('body').addClass('white-content'); </script>";
+//             }
+//         }
+//     }
+// }
 ?>
 
 
-
+<!--    popup window for adding admins     -->
 <div class="modal fade" id="addadminprofile" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
@@ -80,7 +84,7 @@ if ($query_run) {
   </div>
 
   <div class="card-body">
-
+<!--     alert of user updates or errors    -->
     <?php
 if (isset($_SESSION['success']) && $_SESSION['success'] != '') {
     echo '<h2 class="bg-primary text-white">' . $_SESSION['success'] . '</h2>';
@@ -98,7 +102,7 @@ if (isset($_SESSION['status']) && $_SESSION['status'] != '') {
 
 
 
-
+<!--   make a table with admin contents      -->
     <div class="table-responsive">
       <?php
 require 'config/config.php';
@@ -176,7 +180,7 @@ if (mysqli_num_rows($query_run) > 0) {
 
 
 <div class="container-fluid pad-cont-fix">
-
+<!--      sho user profiles   -->
 <!-- DataTales Example -->
 <div class="card shadow mb-4">
   <div class="card-header py-3">  

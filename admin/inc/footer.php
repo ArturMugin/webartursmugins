@@ -1,3 +1,4 @@
+<!--    footer with my name     -->
 <footer class="footer">
         <div class="container-fluid">
           <ul class="nav">
@@ -9,7 +10,10 @@
             
           </ul>
 
+
       </footer>
+
+      <!--    theme code hat i am afraid to delete     -->
     </div>
   </div>
   <div class="fixed-plugin">

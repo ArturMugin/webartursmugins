@@ -25,7 +25,7 @@ if (isset($_POST['edit_btn'])) {
     foreach ($query_run as $row) {
 ?>
 
-
+<!--    form for editing admin     -->
   <form action="code.php" method="POST">
 <input type="hidden" name="edit_id" value="<?php echo $row['id'] ?>">
 <div class="modal-body">
@@ -83,7 +83,7 @@ if (isset($_POST['edit_btn'])) {
     $query_run = mysqli_query($connection, $query);
     foreach ($query_run as $row) {
 ?>
-
+<!--    form for editing user     -->
 
   <form action="code.php" method="POST">
 <input type="hidden" name="edit_id" value="<?php echo $row['id'] ?>">

@@ -1,6 +1,11 @@
 <?php
 session_start();
 ?>
+<!--    THIS     -->
+<!--    PAGE     -->
+<!--    IS     -->
+<!--    NOT     -->
+<!--    USED     -->
 <!doctype html>
 <html lang="en">
   <head>
