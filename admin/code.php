@@ -131,6 +131,29 @@ if (isset($_POST['update_dark'])) {
         echo '<script type="text/javascript">', 'window.history.back();', '</script>';
     }
 }
+
+
+//reset team instances
+if (isset($_POST['update_team'])) {
+    $query = "UPDATE basic_user SET team=0" ;
+    $query_run = mysqli_query($connection, $query);
+    echo '<script>
+
+      window.history.back();
+
+    </script>';
+}
+
+//reset theme color instances
+if (isset($_POST['update_dark'])) {
+    $query = "UPDATE basic_user SET dark=0" ;
+    $query_run = mysqli_query($connection, $query);
+    echo '<script>
+
+      window.history.back();
+
+    </script>';
+}
 ?>
 
 

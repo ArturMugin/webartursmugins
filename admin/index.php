@@ -30,6 +30,9 @@ include ('inc/navbar.php');
               </div>
               <div class="card-body">
               <canvas id="LCSgame"></canvas>
+              <form action="code.php" method="POST" style="text-align: center;">
+              <button  type="submit" name="update_team" class="btn btn-primary" data-dismiss="modal">RESET</button>
+</form>
               </div>
             </div>
           </div>
@@ -41,6 +44,10 @@ include ('inc/navbar.php');
               </div><!--    black and white graph display     -->
               <div class="card-body">
               <canvas id="dark-mode"></canvas>
+              <form action="code.php" method="POST" style="text-align: center;">
+              <button  type="submit" name="update_dark" class="btn btn-primary" data-dismiss="modal">RESET</button>
+</form>
+
               </div>
             </div>
           </div>
